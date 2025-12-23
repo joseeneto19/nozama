@@ -1,12 +1,20 @@
 package com.github.nozama.dto;
 
 import com.github.nozama.entities.Product;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 
 public class ProductDTO {
 
     private Long id;
+    @Size(min = 3, max = 80, message = "O nome do produto precisa ter entre 3 e 80 caracteres.")
+    @NotBlank(message = "Campo requerido.")
     private String name;
+    @Size(min = 10, message = "Descrição do produto precisa ter no mínimo 10 caracteres.")
+    @NotBlank(message = "Campo requerido.")
     private String description;
+    @PositiveOrZero(message = "O preço deve ser positivo.")
     private Double price;
     private String imgUrl;
 
